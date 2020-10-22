@@ -68,7 +68,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 		.exceptionHandling().accessDeniedPage("/security/page403");
 		
-		//http.csrf().disable();//비권장
+		http.csrf().disable();//비권장 다른파일도 같이 하고있어서 일단설정함
 		
 	}
 	

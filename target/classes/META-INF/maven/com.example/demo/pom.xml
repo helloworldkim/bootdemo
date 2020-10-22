@@ -25,7 +25,7 @@
 			<url>http://maven.jahia.org/maven2</url>
 		</repository>
 	</repositories>
-	<dependencies>
+	<dependencies>	
 	<!-- spring security  -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -58,6 +58,13 @@
 			<artifactId>ojdbc7</artifactId>
 			<version>12.1.0.2</version>
 		</dependency>
+		
+		<!--  JAP-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		
 	<!-- mybatis를 위해 추가하는 부분-->
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>

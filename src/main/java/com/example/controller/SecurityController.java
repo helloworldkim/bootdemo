@@ -26,9 +26,7 @@ import com.example.vo.Member1VO;
 @RequestMapping(value = "/security")
 public class SecurityController {
 	@Value("${member.admin.name}") private String ADMINNAME;
-	@Value("${server.myserver.addr}") private String SERVERADDR;
-	@Value("${server.myserver.port}") private String SERVERPORT;
-	@Value("${server.port}") private String SERVERPORTSPRING;
+
 	
 	@Autowired
 	Member1Mapper member1Mapper;
@@ -67,9 +65,6 @@ public class SecurityController {
 		
 		@GetMapping(value = "/home")
 		public String home(HttpServletRequest request, Model model) {
-			System.out.println("서버:"+SERVERADDR);
-			System.out.println("port:"+SERVERPORT);
-			System.out.println("spring properties:"+SERVERPORTSPRING);
 			System.out.println("CONTROLLER:"+ADMINNAME);
 		return "security_home";
 		}
