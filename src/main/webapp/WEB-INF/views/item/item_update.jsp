@@ -36,7 +36,7 @@
 		</tr>
 		<tr>
 			<th>등록일</th>	
-			<td><input type="text" name="date1" value="${obj.date}" readonly="readonly"></td>
+			<td><input type="text" value="${obj.date}" readonly="readonly"></td>
 		</tr>
 </table>
 <input type="submit" class="btn btn-primary" value="수정하기">

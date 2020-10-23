@@ -14,7 +14,11 @@
 <body>
 <!--root경로 지정이 되어야지만 aws(아마존)서버 등에서 돌아가는게 가능함 root경로 지정!!  -->
 <div class="container">
-
+<form action="${pageContext.request.contextPath}/jpa/item_select.do" method="get">
+	<input type="text" name="name" placeholder="검색할 물품명">
+	<input type="submit" value="검색">
+	<a class="btn btn-primary float-right" href="${pageContext.request.contextPath}/jpa/item_home.do">홈으로</a>
+</form>
 <table class="table table-hover">
 	<thead class="table table-dark">
 		<tr>
@@ -30,7 +34,7 @@
 	
 	<c:forEach var="tmp" items="${list}">
 		<tr>
-			<td>${tmp.no}</td>
+			<td><a href="${pageContext.request.contextPath}/jpa/item_detail.do?no=${tmp.no}">${tmp.no}</a></td>
 			<td>${tmp.name}</td>
 			<td>${tmp.content}</td>
 			<td>${tmp.price}</td>
@@ -38,9 +42,16 @@
 			<td><a href="#" class="btn btn-primary" data-no="${tmp.no}">수정</a></td>
 			<td><a href="#" class="btn btn-primary" data-no="${tmp.no}">삭제</a></td>
 		</tr>
-		
 	</c:forEach>
 </table>
+<ul class="pagination" style="text-align: center;">
+
+<c:forEach  var="i" begin="1" end="${total}">
+		<li class="page-item" style="display: inline-block;">
+			<a href="${pageContext.request.contextPath}/jpa/item_select.do?page=${i}&name=${param.name}" class="page-link">${i}</a>
+		</li>
+</c:forEach>
+</ul>
 <script>
 $(function(){
 	$("a").click(function(event){

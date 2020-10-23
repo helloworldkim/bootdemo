@@ -2,6 +2,7 @@ package com.example.repository;
 
 import java.util.List;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -12,6 +13,15 @@ import com.example.entity.Item;
 
 
 public interface ItemRepository extends CrudRepository<Item, Long>   {
+	
+	//SELECT * FROM ITEMTBL WHERE ITMNO=:no
+	Item findAllByNo(long no);
+	
+	//SELECT COUNT(*) FROM ITEMTBL WHERE ITMNAME LIKE '%' ||'사과''||'%';
+	long countByNameIgnoreCaseContaining(String name);
+	
+	//SELECT * FROM ITEMTBL WHERE ITMNAME LIKE '%' ||'사과''||'%'
+	List<Item> findAllByNameIgnoreCaseContainingOrderByNoAsc(String name,Pageable pageable);
 	
 	//// 참고 : https://docs.spring.io/spring-data/jpa/docs/1.10.1.RELEASE/reference/html/#jpa.sample-app.finders.strategies
 	//select * from itemtbl order by no desc
@@ -35,7 +45,6 @@ public interface ItemRepository extends CrudRepository<Item, Long>   {
 	@Modifying(clearAutomatically = true)
 	@Query(value = "DELETE FROM ITEMTBL WHERE ITMNO=:no",nativeQuery = true)
 	int sqldeleteByNo(@Param("no") long no);
-	
 	
 	@Transactional
 	@Modifying(clearAutomatically = true)
