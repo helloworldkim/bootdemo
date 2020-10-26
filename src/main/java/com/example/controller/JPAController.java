@@ -1,15 +1,15 @@
 package com.example.controller;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.Reader;
-import java.util.ArrayList;
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.IOUtils;
@@ -21,7 +21,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -47,10 +46,73 @@ public class JPAController {
 	@Autowired
 	ItemImgRepsoitory imgRepository;
 	
+	//배치할때 추가한부분 트랜젝션 관리 할때 씀
+	@Autowired
+	EntityManagerFactory emf;
+	
 	@GetMapping(value = {"/item_home.do","/"})
 	public String home(HttpServletRequest request,Model model) {
 		
 		return "/item/item_home";
+	}
+	//배치 페이지이동
+	@GetMapping(value = "/item_insert_batch.do")
+	public String insertbatchget(HttpServletRequest request,Model model) {
+		return "/item/item_insert_batch";
+	}
+	//batch insert 수행하는 곳
+	@PostMapping(value = "/item_insert_batch.do")
+	public String insertbatchpost(HttpServletRequest request,Model model,
+			@RequestParam("names[]") String[] names,
+			@RequestParam("contents[]") String[] contents,
+			@RequestParam("prices[]") String[] prices) {
+		
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		String sql = "INSERT INTO ITEMTBL(ITMNO,ITMNAME,ITMCONTENT,ITMPRICE,ITMDATE)"
+				+" VALUES(SEQ_ITEM_ITMNO.NEXTVAL, :name, :content, :price, SYSDATE)";
+		for(int i=0; i<names.length; i++) {
+			em.createNativeQuery(sql)
+				.setParameter("name", names[i])
+				.setParameter("content", contents[i])
+				.setParameter("price", prices[i])
+				.executeUpdate();
+		}
+		tx.commit();
+		
+		return "redirect:"+request.getContextPath()+"/jpa/item_home.do";
+	}
+	@GetMapping(value = "/item_update_batch.do")
+	public String updatebatchGet(HttpServletRequest request,Model model) {
+		
+		return "/item/item_update_batch";
+	}
+	//batch update 수행
+	@PostMapping(value = "/item_update_batch.do")
+	public String updatebatchpost(HttpServletRequest request,
+			@RequestParam("names[]") String[] names,
+			@RequestParam("contents[]") String[] contents,
+			@RequestParam("prices[]") String[] prices,
+			@RequestParam("nos[]") String[] nos) {
+		
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		String sql = "UPDATE ITEMTBL SET ITMNAME=:name, ITMCONTENT =:content,ITMPRICE=:price WHERE ITMNO=:no";
+		for(int i=0; i<names.length; i++) {
+			em.createNativeQuery(sql)
+				.setParameter("name", names[i])
+				.setParameter("content", contents[i])
+				.setParameter("price", prices[i])
+				.setParameter("no", nos[i])
+				.executeUpdate();
+		}
+
+
+		tx.commit();
+		
+		return "redirect:"+request.getContextPath()+"/jpa/item_home.do";
 	}
 	
 	//이미지삭제
