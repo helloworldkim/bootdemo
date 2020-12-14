@@ -16,7 +16,7 @@ public class HttpInterceptor extends HandlerInterceptorAdapter {
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 		//session 사용시 선언해서 사용
-				HttpSession httpSession = request.getSession();
+		HttpSession httpSession = request.getSession();
 		String path = request.getServletPath();
 		String query = request.getQueryString();
 		if(query ==null) {

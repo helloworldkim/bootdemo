@@ -20,7 +20,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @ComponentScan({"com.example.controller",
 	"com.example.restcontroller",
 	"com.example.security",
-	"com.example.interceptor"}) //컨트롤러 파일위치 명시
+	"com.example.interceptor",
+	"com.example.redis"}) //컨트롤러 파일위치 명시
 @MapperScan("com.example.mapper") //mapper위치 명시
 public class DemoApplication {
 

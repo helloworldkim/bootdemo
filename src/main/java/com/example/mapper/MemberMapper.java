@@ -23,7 +23,7 @@ public interface MemberMapper {
 	
 	public int memberUpdate();
 	
-	@Select({"SELECT USERID,USERNAME,USERAGE FROM MEMBERTBL WHERE USERID=#{obj.userId} AND USERPW=#{obj.userPw}"})
+	@Select({"SELECT USERID,USERNAME,USERAGE,USERDATE FROM MEMBERTBL WHERE USERID=#{obj.userId} AND USERPW=#{obj.userPw}"})
 	public MemberVO memberLogin(@Param("obj") MemberVO mem);
 	
 	@Select({"SELECT COUNT(*) FROM MEMBERTBL WHERE USERID=#{id}"})

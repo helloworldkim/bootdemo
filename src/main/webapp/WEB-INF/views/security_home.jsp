@@ -20,6 +20,7 @@
 		<!--security에 사용된 객체  -->
 		OBJECT:<security:authentication property="principal"/><br/>
 		ROLE: <security:authentication property="authorities"/><br/>
+		기본키: <security:authentication property="principal.id"/> <br/>
 		아이디: <security:authentication property="principal.username"/> <br/>
 		이름: <security:authentication property="principal.name"/> 님 환영합니다<br/>
 		가입일자: <security:authentication property="principal.userdate"/><br>
@@ -33,6 +34,7 @@
 		<security:authorize access="hasAuthority('USER')">
 			사용자입니다
 		</security:authorize>
+		<c:set var="id" target="principal.id"/>
 		<form action="${pageContext.request.contextPath}/security/logout" method="post">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 			<input type="submit" value="로그아웃">

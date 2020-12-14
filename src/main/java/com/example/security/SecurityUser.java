@@ -9,7 +9,7 @@ public class SecurityUser extends User {
 
 	private static final long serialVersionUID = 1L;
 	
-	
+	private long id = 0;
 	private String username =null;
 	private String password =null;
 	private String name =null;
@@ -54,15 +54,23 @@ public class SecurityUser extends User {
 	}
 
 	//추가한 생성자
-	public SecurityUser(String username, String password,String name,String userdate,
+	public SecurityUser(long id,String username, String password,String name,String userdate,
 			Collection<? extends GrantedAuthority> authorities) {
 		super(username, password, authorities);
 		this.username=username;
 		this.password=password;
 		this.name=name;
 		this.userdate= userdate;
+		this.id = id;
 		
-		
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 }

@@ -93,7 +93,6 @@ public class BoardController {
 		if(page==0) {//페이지번호가 없으면 1페이지로 이동시킴
 			return "redirect:"+request.getContextPath()+"/board/list?page=1";
 		}
-		Map<String,Object> map = new HashMap<>();
 
 		System.out.println("txt값:"+txt);
 		//조회수 증가방지 세션값 1줌

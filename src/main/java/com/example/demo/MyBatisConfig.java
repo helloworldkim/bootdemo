@@ -18,7 +18,7 @@ public class MyBatisConfig {
         SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
         
         sqlSessionFactory.setDataSource(dataSource);
-        sqlSessionFactory.setTypeAliasesPackage("com.example.member.vo");
+        sqlSessionFactory.setTypeAliasesPackage("com.example.vo");
         return sqlSessionFactory.getObject();
     }
     

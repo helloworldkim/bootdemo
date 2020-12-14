@@ -18,7 +18,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
 		//인터셉터 등록
 		registry.addInterceptor(interceptor)
 			.addPathPatterns("/**") //모든경로 인터셉터 통과시키도록 지정
-			.excludePathPatterns("/login/**","/logout/**","/resources/**");	//제외경로 login logout 리소스폴더내 파일들(css등)
+			.excludePathPatterns("/login/**","/logout/**","/resources/**","/rest/**");	//제외경로 login logout 리소스폴더내 파일들(css등)
 		//.excludePathPatterns("/jpa/item_home.do/**","/resources/**");	
 		
 	}

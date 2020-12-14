@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.3.4.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>demo</artifactId>
@@ -17,7 +18,7 @@
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
-	<!--오라클 디펜던시 추가를 위해 필요한부분 !! 필수!!  -->
+	<!--오라클 디펜던시 추가를 위해 필요한부분 !! 필수!! -->
 	<repositories>
 		<repository>
 			<id>oracle</id>
@@ -25,8 +26,21 @@
 			<url>http://maven.jahia.org/maven2</url>
 		</repository>
 	</repositories>
-	<dependencies>	
-	<!-- spring security  -->
+	<dependencies>
+		<!--lombok -->
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<!--redis -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+		<!-- spring security -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
@@ -35,8 +49,8 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-taglibs</artifactId>
 		</dependency>
-	<!--spring boot json은 이미 포함되어있음! 디펜던시 추가하면 라이브러리 충돌오류 발생함!  -->
-	<!--file upload 라이브러리  -->
+		<!--spring boot json은 이미 포함되어있음! 디펜던시 추가하면 라이브러리 충돌오류 발생함! -->
+		<!--file upload 라이브러리 -->
 		<dependency>
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
@@ -47,25 +61,20 @@
 			<artifactId>commons-io</artifactId>
 			<version>1.3.2</version>
 		</dependency>
-<!-- 		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>2.4</version>
-		</dependency> -->
-	<!--oracle jdbc  -->
+		<!--oracle jdbc -->
 		<dependency>
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc7</artifactId>
 			<version>12.1.0.2</version>
 		</dependency>
-		
-		<!--  JAP-->
+
+		<!-- JAP -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-		
-	<!-- mybatis를 위해 추가하는 부분-->
+
+		<!-- mybatis를 위해 추가하는 부분 -->
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
@@ -76,19 +85,19 @@
 			<artifactId>mybatis</artifactId>
 			<version>3.5.4</version>
 		</dependency>
-	<!-- 임의로 추가한부분-->
+		<!-- 임의로 추가한부분 -->
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-jasper</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		
-        <dependency>
+
+		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 		</dependency>
@@ -97,9 +106,9 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
-		
-		
-	<!-- 초반에 추가되는부분-->
+
+
+		<!-- 초반에 추가되는부분 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>

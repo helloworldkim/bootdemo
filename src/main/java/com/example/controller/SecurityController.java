@@ -3,13 +3,12 @@ package com.example.controller;
 import java.util.Collection;
 
 import javax.servlet.http.HttpServletRequest;
-
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -65,6 +64,8 @@ public class SecurityController {
 		
 		@GetMapping(value = "/home")
 		public String home(HttpServletRequest request, Model model) {
+			HttpSession httpSession = request.getSession();
+			System.out.println("session 아이디값:"+httpSession.getId());
 			System.out.println("CONTROLLER:"+ADMINNAME);
 		return "security_home";
 		}

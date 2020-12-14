@@ -23,7 +23,7 @@
 	</thead>
 	<tr>
 		<th>아이디:</th>
-		<td><input type="text" name="userId"></td>
+		<td><input type="text" name="userid"></td>
 	</tr>
 	<tr id='checkbox'>
 		<th>중복체크:</th>
@@ -31,7 +31,7 @@
 	</tr>
 	<tr>
 		<th>비밀번호:</th>
-		<td><input type="password" name="userPw"></td>
+		<td><input type="password" name="userpw"></td>
 	</tr>
 	<tr>
 		<th>비밀번호 확인:</th>
@@ -39,15 +39,15 @@
 	</tr>
 	<tr>
 		<th>이름:</th>
-		<td><input type="text" name="userName"></td>
+		<td><input type="text" name="username"></td>
 	</tr>
 	<tr>
 		<th>전화번호:</th>
-		<td><input type="text" name="userPhone"></td>
+		<td><input type="text" name="userphone"></td>
 	</tr>
 	<tr>
 		<th>나이:</th>
-		<td><input type="text" name="userAge"></td>
+		<td><input type="text" name="userage"></td>
 	</tr>
 </table>
 	<input class="btn btn-primary" type="submit" value="회원가입">
